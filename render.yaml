@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: lumeo-ai
+    env: node
+    buildCommand: npm install && pip3 install yt-dlp --break-system-packages 2>/dev/null || pip3 install yt-dlp 2>/dev/null || true
+    startCommand: node index.js
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
